@@ -16,7 +16,7 @@ val assembleReleaseTaskName: String
                 "Linux"
 
             Platform.MAC ->
-                "Mac"
+                "Macos"
 
             else -> error("not support os type")
         }
@@ -41,7 +41,7 @@ val Project.libraryReleaseDir: Pair<File, String>
                 "linux" to ".so"
 
             Platform.MAC ->
-                "mac" to ".dylib"
+                "macos" to ".dylib"
 
             else -> error("not support os type")
         }
