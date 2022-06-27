@@ -14,12 +14,13 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.processResources {
-    val target = project(":annoy")
-    dependsOn(target.tasks.getByName("assembleRelease"))
-    doFirst {
-        copyLibrary(from = target)
+val target = project(":annoy")
+tasks.create("copyLibrary"){
+    tasks.processResources{
+        this.mustRunAfter(this@create)
     }
+    dependsOn(target.tasks.getByName("assembleRelease"))
+    copyLibrary(from = target)
 }
 
 java {
